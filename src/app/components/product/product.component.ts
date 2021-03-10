@@ -14,5 +14,8 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     console.log("İnit çalıştı");
   }
+  getProducts(){
+    
+  }
 
 }
