@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import {HttpClient} from '@angular/common/http';
+import { productResponseModel } from 'src/app/models/productResponseModel';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -16,7 +17,7 @@ export class ProductComponent implements OnInit {
     console.log("İnit çalıştı");
   }
   getProducts(){
-    this.httpClient.get(this.apiUrl);
+    this.httpClient.get<productResponseModel>(this.apiUrl);
 
   }
 
