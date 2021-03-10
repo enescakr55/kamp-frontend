@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 export class ProductComponent implements OnInit {
 
   products:Product[] = []
-  constructor() { }
+  constructor(httpClient:HttpClient) { }
 
   ngOnInit(): void {
     console.log("İnit çalıştı");
