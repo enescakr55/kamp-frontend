@@ -17,7 +17,8 @@ export class ProductComponent implements OnInit {
     console.log("İnit çalıştı");
   }
   getProducts(){
-    this.httpClient.get<productResponseModel>(this.apiUrl);
+    this.httpClient.get<productResponseModel>(this.apiUrl)
+    .subscribe((response)=>{});
 
   }
 
