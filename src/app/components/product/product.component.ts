@@ -3,6 +3,7 @@ import { Product } from 'src/app/models/product';
 import {HttpClient} from '@angular/common/http';
 import { ProductService } from 'src/app/services/product.service';
 import { ListResponseModel } from 'src/app/models/listResponseModel';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -19,18 +20,31 @@ export class ProductComponent implements OnInit {
     message:"",
     success:true
   }
-  constructor(private productService:ProductService) { }
+  constructor(private productService:ProductService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.activatedRoute.params.subscribe(params=>{
+      if(params["categoryId"]){
+        this.getProductsByCategory(params["categoryId"]);
+      }else{
+        this.getProducts();
+      }
+    })
   }
-  getProducts(){
-    console.log("")
+  getProducts(){ 
     this.productService.getProducts().subscribe(response=>{
       this.products = response.data;
       this.dataLoaded = true;
     })
   }
+  getProductsByCategory(categoryId:number){
+    console.log("")
+    this.productService.getProductsByCategory(categoryId).subscribe(response=>{
+      this.products = response.data;
+      this.dataLoaded = true;
+    })
+  }
+
 
 
 }

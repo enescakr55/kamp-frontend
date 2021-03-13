@@ -17,11 +17,25 @@ export class CategoryComponent implements OnInit {
   }
   setCurrentCategory(category:Category){
     console.log(category.categoryName);
+    this.currentCategory = category;
   };
+  getCurrentCategory(category:Category){
+    if(category == this.currentCategory){
+      return "list-group-item active";
+    }
+    return "list-group-item";
+  }
   getCategories(){
     this.categoryService.getProducts().subscribe(response=>{
       this.categories = response.data;
     })
   }
+  getAllCategoryClass(){
+    if(!this.currentCategory){
+      return "list-group-item active";
+    }
+    return "list-group-item";
+  }
+
 
 }
