@@ -9,7 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryComponent implements OnInit {
   categories:Category[] = [];
-  currentCategory:Category;
+  currentCategory?:Category;
   constructor(private categoryService:CategoryService) { }
 
   ngOnInit(): void {
@@ -35,6 +35,9 @@ export class CategoryComponent implements OnInit {
       return "list-group-item active";
     }
     return "list-group-item";
+  }
+  clearCurrentCategory(){
+    this.currentCategory=undefined;
   }
 
 
